@@ -1,0 +1,11 @@
+int getDecimalValue(ListNode* head) {
+        int kow = 0;
+        while(head != NULL){
+            kow *= 2;
+            if(head -> val == 1){
+                kow += 1;
+            }
+            head = head -> next;
+        }
+        return kow;
+    }
