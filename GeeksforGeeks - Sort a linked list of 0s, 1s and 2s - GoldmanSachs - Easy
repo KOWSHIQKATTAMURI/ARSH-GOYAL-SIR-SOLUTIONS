@@ -1,0 +1,22 @@
+void sortList(Node *head){
+	int count[3] = {0, 0, 0};
+	Node *kow = head;
+	while (kow != NULL){
+		count[kow -> data] += 1;
+		kow = kow -> next;
+	}
+	int i = 0;
+	kow = head;
+	while (ptr != NULL)
+	{
+		if(count[i] == 0){
+			i++;
+    }
+		else{
+			kow -> data = i;
+			count[i]--;
+			kow = kow -> next;
+		}
+	}
+}
+
