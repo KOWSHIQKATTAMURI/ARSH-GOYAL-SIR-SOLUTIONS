@@ -1,0 +1,16 @@
+string longestCommonPrefix(vector<string> &strs){
+    sort(strs.begin(), strs.end());
+    string req;
+    int size = strs.size();
+    string hi = strs[0];
+    string bye = strs[size - 1];
+    int kow = strs[0].size();
+    for(int i = 0; i < kow; i++){
+        if(hi[i] == bye[i]){
+            req += hi[i];
+        }else{
+            break;
+        }
+    }
+    return req;
+}
