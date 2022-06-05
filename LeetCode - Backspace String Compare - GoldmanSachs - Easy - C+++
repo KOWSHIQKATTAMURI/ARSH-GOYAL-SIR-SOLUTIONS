@@ -1,0 +1,24 @@
+bool backspaceCompare(string s, string t) {
+        stack<char> kow;
+        stack<char> kee;
+        
+        for(int i = 0; i < s.length(); i++){
+            if(s[i] != '#'){
+                kow.push(s[i]);
+            }else{
+                if(!kow.empty()){
+                    kow.pop();
+                }
+            }
+        }
+        for(int i = 0; i < t.length(); i++){
+            if(t[i] != '#'){
+                kee.push(t[i]);
+            }else{
+                if(!kee.empty()){
+                    kee.pop();
+                }
+            }
+        }
+        return kow == kee;
+    }
