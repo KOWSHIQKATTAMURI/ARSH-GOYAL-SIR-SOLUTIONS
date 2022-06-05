@@ -1,0 +1,13 @@
+ ListNode* temp;
+    bool isPalindrome(ListNode* head) {
+        temp = head;
+        return check(head);
+    }
+    bool check(ListNode* curr){
+        if(curr == NULL){
+            return true;
+        }
+        bool kow = check(curr -> next) && (curr -> val == temp -> val);
+        temp = temp -> next;
+        return kow;
+    }
