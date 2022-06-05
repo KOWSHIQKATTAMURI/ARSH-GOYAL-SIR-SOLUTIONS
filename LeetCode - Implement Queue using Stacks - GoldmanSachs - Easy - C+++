@@ -1,0 +1,41 @@
+class MyQueue {
+    private:
+    stack<int> kow;
+    stack<int> kee;
+    int first;
+    
+public: 
+    void push(int x) {
+        if(kow.empty()){
+            first = x;
+        }
+        kow.push(x);
+    }
+    
+    int pop() {
+        if(kee.empty()){
+            while(!kow.empty()){
+                kee.push(kow.top());
+                kow.pop();
+            }
+        }
+        int x = kee.top();
+        kee.pop();
+        return x;
+    }
+    
+    int peek() {
+        if(!kee.empty()){
+            return kee.top();
+        }
+        return first;
+    }
+    
+    bool empty() {
+        if(kow.empty() && kee.empty()){
+            return true;
+        }else{
+            return false;
+        }
+    }
+};
