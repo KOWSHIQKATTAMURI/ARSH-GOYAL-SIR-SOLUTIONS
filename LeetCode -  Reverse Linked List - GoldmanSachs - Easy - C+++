@@ -1,0 +1,12 @@
+    ListNode* reverseList(ListNode* head) {
+        ListNode* kow = head;
+        ListNode* prev = NULL;
+        ListNode* kee;
+        while(kow != NULL){
+            kee = kow -> next;
+            kow -> next = prev;
+            prev = kow;
+            kow = kee;
+        }
+        return prev;
+    }
