@@ -1,0 +1,20 @@
+ vector<int> dfs(int node, vector<int> &visited, vector<int> adj[], vector<int> &storeDfs){
+        storeDfs.push_back(node);
+        visited[node] = 1;
+        for(auto it : adj[node]){
+            if(!visited[i]){
+                dfs(i, visited. adj, storeDfs);
+            }
+        }
+    }
+    public:
+    vector<int>dfsofGraph(int V, vector<int> adj[]){
+        vector<int> storeDfs;
+        vector<int> visited(V + 1, 0);
+        for(int i = 1; i <= V; i++){
+            if(!visited[i]){
+                dfs(i, visited, adj, storeDfs);
+            }
+        }
+        return storeDfs;
+    }
