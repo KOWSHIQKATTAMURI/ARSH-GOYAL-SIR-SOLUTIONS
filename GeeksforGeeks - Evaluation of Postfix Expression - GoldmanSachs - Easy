@@ -1,0 +1,31 @@
+int postfixEvaluation(string s){
+    stack<int> kow;
+    for(int i = 0; i < s.length(); i++){
+        if(s[i] >= '0' && s[i] <= '9'){
+            kow.push(s[i] - '0');
+        }else{
+            int b = kow.top();
+            kow.pop();
+            int a = kow.top();
+            kow.pop();
+            switch(s[i]){
+                case '+':
+                    kow.push(a + b);
+                    break;
+                case '-':
+                    kow.push(a - b);
+                    break;
+                case '*':
+                    kow.push(a * b);
+                    break;
+                case '/':
+                    kow.push(a / b);
+                    break;
+                case '^':
+                    kow.push(pow(b, a));
+                    break;
+            }
+        }
+    }
+    return kow.top();
+}
