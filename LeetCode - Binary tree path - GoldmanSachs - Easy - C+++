@@ -1,0 +1,18 @@
+vector<string> kow;
+    vector<string> binaryTreePaths(TreeNode* root) {
+       binarytree(root, "");
+       return kow;
+    }
+    void binarytree(TreeNode* node, string kee){
+        if(node == NULL){
+            return;
+        }
+        kee.append(to_string(node -> val));
+        if(node -> left == NULL and node -> right == NULL){
+            kow.push_back(kee);
+            return;
+        }
+        kee.append("->");
+        binarytree(node -> left, kee);
+        binarytree(node -> right, kee);
+    }
