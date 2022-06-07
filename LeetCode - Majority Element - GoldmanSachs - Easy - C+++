@@ -1,0 +1,11 @@
+int majorityElement(vector<int>& nums) {
+        int count = 0;
+	    int element = 0;
+	for (auto kow : nums) {
+		if(count == 0) {
+			element = kow;
+		}
+		count += (kow == element) ? 1 : -1;
+	}
+	return element;
+    }
