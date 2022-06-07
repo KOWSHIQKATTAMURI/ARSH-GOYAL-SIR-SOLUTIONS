@@ -1,0 +1,8 @@
+vector<int> countBits(int n) {
+        vector<int> kow(n+1);
+        kow[0] = 0;
+        for(int i = 1; i <= n; i++){
+            kow[i] = kow[i/2] + i%2;
+        }
+        return kow;
+    }
