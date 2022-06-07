@@ -1,0 +1,18 @@
+int minSwaps(int arr[], int N){
+    vector<pair<int,int>> kow(N);
+    for(int i = 0; i < N; i++){
+        kow[i] = {arr[i], i};
+    }
+    sort(kow.begin(), kow.end());
+    int count = 0;
+    for(int i = 0; i < N; i++){
+        if(i == kow[i].second){
+            continue;
+        }else{
+            count++;
+            swap(kow[i], kow[kow[i].second]);
+            i--;
+        }
+    }
+    return count;
+}
