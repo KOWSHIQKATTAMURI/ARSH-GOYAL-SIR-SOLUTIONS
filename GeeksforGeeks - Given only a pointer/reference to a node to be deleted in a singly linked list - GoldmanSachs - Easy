@@ -1,0 +1,6 @@
+void deleteNode(struct Node* node_ptr){
+    struct Node* kow = node_ptr -> next;
+    node_ptr -> data = kow -> data;
+    node_ptr -> next = kow -> next;
+    free(kow);
+}
