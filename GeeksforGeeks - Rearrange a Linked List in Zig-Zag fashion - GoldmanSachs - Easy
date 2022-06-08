@@ -1,0 +1,28 @@
+Node *zigZag(Node* head){
+         if(head == NULL || head->next == NULL) {
+      return head;
+    }
+    
+    Node *node = head;
+    int kow = 0;
+    
+    while(node->next != NULL) {
+      if(kow%2 == 0) {
+        if(node->data > node->next->data) {
+          int t = node->data;
+          node->data = node->next->data;
+          node->next->data = t;
+        }
+        kow++;
+      } else {
+        if(node->data < node->next->data) {
+          int t = node->data;
+          node->data = node->next->data;
+          node->next->data = t;
+        }
+        kow++;
+      }
+      node = node -> next;
+    }
+    return head;
+  }
