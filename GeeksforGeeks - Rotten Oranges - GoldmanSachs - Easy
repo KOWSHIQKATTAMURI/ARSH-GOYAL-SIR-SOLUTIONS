@@ -1,0 +1,60 @@
+    bool isValid(int i, int j, int n, int m, vector<vector<int>>& grid){
+     if(i >= 0 and i < n and j >= 0 and j < m and grid[i][j] == 1){
+         return true;
+     }   
+     return false;
+    }
+    int orangesRotting(vector<vector<int>>& grid) {
+        int n = grid.size();
+        int m = grid[0].size();
+        int fresh = 0;
+        int timereq = 0;
+        queue<pair<int, int>> kow;
+        for(int i = 0; i < n; i++){
+            for(int j = 0; j < m; j++){
+                if(grid[i][j] == 2){
+                    kow.push({i, j});
+                }else if(grid[i][j] == 1){
+                    fresh++;
+                }
+            }
+        }
+        if(fresh == 0){
+            return 0;
+        }
+        while(!kow.empty()){
+            int kow_size = kow.size();
+            int kee = 0;
+            while(kow_size != 0){
+                pair<int, int> p = kow.front();
+                kow.pop();
+                int x1 = p.first;
+                int y1 = p.second;
+                int arrx[4] = {1, -1, 0, 0};
+                int arry[4] = {0, 0, 1, -1};
+                for(int i = 0; i < 4; i++){
+                    int x = arrx[i] + x1;
+                    int y = arry[i] + y1;
+                    if(isValid(x, y, n, m, grid)){
+                        kee++;
+                        grid[x][y] = 2;
+                        kow.push({x, y});
+                    }
+                }
+             kow_size--;    
+            }
+            if(kee != 0){
+                timereq++; 
+            }
+        }
+        for(int i = 0; i < n; i++){
+            for(int j = 0; j < m; j++){
+                if(grid[i][j] == 1){
+                    timereq = 0;
+                    break;
+                }
+            }
+        }
+        return (timereq == 0) ? -1 : timereq;
+    }
+};
