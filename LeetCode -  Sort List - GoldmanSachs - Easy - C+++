@@ -1,0 +1,18 @@
+ ListNode* sortList(ListNode* head) {
+        if(head == NULL){
+            return head;
+        }
+     priority_queue<int, vector<int>, greater<int>> pq;
+     ListNode* kow = head;
+     ListNode* kee = head;
+     while(kow != NULL){
+         pq.push(kow->val);
+         kow = kow -> next;
+     }
+     while(kee != NULL){
+         kee -> val = pq.top();
+         pq.pop();
+         kee = kee -> next;
+     }   
+        return head;
+    }
