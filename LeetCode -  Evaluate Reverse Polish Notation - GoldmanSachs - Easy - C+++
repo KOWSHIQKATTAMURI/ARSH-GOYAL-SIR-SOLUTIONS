@@ -1,0 +1,26 @@
+ int evalRPN(vector<string>& tokens) {
+          stack<int>kow;
+        for(int i = 0; i < tokens.size(); i++){
+            if(tokens[i] == "+" || tokens[i] == "*" || tokens[i] == "-" || tokens[i] == "/"){
+                int a = kow.top() ;
+                kow.pop();
+                int b = kow.top() ; 
+                kow.pop();
+				if(tokens[i]=="+"){
+					kow.push(a + b);
+                }
+				else if(tokens[i] == "*"){
+				   kow.push(a * b);
+                }
+				else if(tokens[i] == "-"){
+				   kow.push(b - a);
+                }
+				else if(tokens[i] == "/"){
+				   kow.push(b / a);  
+                }
+            }else{
+                kow.push(stoi(tokens[i]));
+            }
+        }
+        return kow.top();
+    }
