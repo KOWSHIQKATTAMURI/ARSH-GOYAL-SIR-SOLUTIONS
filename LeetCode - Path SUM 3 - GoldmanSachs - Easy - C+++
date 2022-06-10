@@ -1,0 +1,25 @@
+ int total = 0;
+    void findSum(TreeNode* kee, long sum, int target,  map<int, int> mp){
+        if(kee == NULL){
+            return;
+        }
+        sum += kee -> val;
+        auto itr = mp.find(sum - target);
+        if(itr != mp.end()){
+            total += mp[sum - target];
+        }
+        mp[sum] += 1; 
+        findSum(kee -> left, sum, target, mp);
+        findSum(kee -> right, sum, target, mp);
+        mp[sum] -= 1;
+        return;
+    }
+    int pathSum(TreeNode* root, int targetSum) {
+        if(root == NULL){
+            return 0;
+        }
+        map<int, int> kow;
+        kow.insert(pair<long, int>(0, 1));
+        findSum(root, 0, targetSum, kow);
+        return total;
+    }
