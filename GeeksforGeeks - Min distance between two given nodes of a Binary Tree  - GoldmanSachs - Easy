@@ -1,0 +1,37 @@
+  Node* ancestor(Node* node, int l, int m){
+        if(node == NULL){
+            return NULL;
+        }
+        if(node -> data == l or node -> data == m){
+            return node;
+        }
+        Node* anc = ancestor(node -> left, l, m);
+        Node* estor = ancestor(node -> right, l, m);
+        if(anc != NULL and estor != NULL){
+            return node;
+        }else if(anc == NULL and estor != NULL){
+            return estor;
+        }
+        return anc;
+    }
+    int dist(Node* kow, int kee){
+        if(kow == NULL){
+            return 0;
+        }
+        if(kow -> data == kee){
+            return 1;
+        }
+        int x = dist(kow -> left, kee);
+        int y = dist(kow -> right, kee);
+        if(x == 0 and y == 0){
+            return 0;
+        }else{
+            return x + y + 1;
+        }
+    }
+    int findDist(Node* root, int a, int b) {
+        Node* LCA = ancestor(root, a, b);
+        int x = dist(LCA, a);
+        int y = dist(LCA, b);
+        return x + y - 2;
+    }
