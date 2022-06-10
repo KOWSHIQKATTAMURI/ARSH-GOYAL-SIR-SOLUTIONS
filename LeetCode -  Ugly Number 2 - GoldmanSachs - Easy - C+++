@@ -1,0 +1,21 @@
+ int nthUglyNumber(int n) {
+      vector<int> kow(n);
+        kow[0] = 1;
+        int a = 0, b = 0, c = 0;
+        for(int i = 1; i < n; i++){
+            int two = kow[a]*2;
+            int three = kow[b]*3;
+            int five = kow[c]*5;
+            kow[i] = min({two, three, five});
+            if(kow[i] == two){
+                a++;
+            } 
+            if(kow[i] == three){
+                b++;
+            }
+            if(kow[i] == five){
+                c++;
+            }
+        }
+        return kow[n - 1];
+    }
