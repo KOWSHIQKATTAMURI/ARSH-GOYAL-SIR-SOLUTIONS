@@ -1,0 +1,22 @@
+ int have = 0;
+        int spend = 0;
+        int present = 0;
+        int ans = 0;
+        for(int i = 0; i < gas.size(); i++){
+            have += gas[i];
+        }
+        for(int i = 0; i < gas.size(); i++){
+            spend += cost[i];
+        }
+        if(spend > have){
+            return -1;
+        }
+        for(int i = 0; i < gas.size(); i++){
+            present += gas[i] - cost[i];
+            if(present < 0){
+                ans = i + 1;
+                present = 0;
+            }
+        }
+        return ans;
+    }
