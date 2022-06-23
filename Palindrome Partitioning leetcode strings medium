@@ -1,0 +1,30 @@
+vector<vector<string>>ans;
+bool isPalindrome(string s){
+    int n = s.size() -1;
+    for(int i = 0; i<s.size()/2;i++){
+        if(s[i]!=s[n-i]){
+          return false;
+        }
+    }
+        return true;
+}
+void dfs(string s, vector<string>temp){
+    if(s.length()==0){
+        ans.push_back(temp);
+        return;
+    }
+    for(int i=0; i<s.size(); i++){
+        string left = s.substr(0, i+1);
+        if(isPalindrome(left)){
+            temp.push_back(left);
+            dfs(s.substr(i+1), temp);
+            temp.pop_back();
+        }
+    }
+}
+    vector<vector<string>> partition(string s) {
+        vector<string> temp;
+        dfs(s, temp);
+        return ans;
+    }
+};
