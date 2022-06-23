@@ -1,0 +1,17 @@
+int minCost(string colors, vector<int>& neededTime) {
+        int i = 0, j = 1, cost = 0 ;
+        while( i < colors.size()-1 ){
+            if( colors[i] == colors[j] ){
+                if( neededTime[i] < neededTime[j] ){
+                    cost += neededTime[i] ;
+                    i = j ;
+                }
+                else
+                    cost += neededTime[j] ;
+            }
+            else
+                i = j ;
+            j++ ;
+        }
+        return cost ;
+    }
