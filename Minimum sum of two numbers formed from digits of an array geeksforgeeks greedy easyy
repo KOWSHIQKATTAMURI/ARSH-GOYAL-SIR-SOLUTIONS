@@ -1,0 +1,31 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+int leastsum(int kow[], int n){
+    priority_queue<int, vector<int>, greater<int>> sow;
+    for(int i = 0; i < n; i++){
+        sow.push(kow[i]);
+    }
+    string x1, x2;
+    while(!sow.empty()){
+        x1 += 48 + sow.top();
+        sow.pop();
+        if(!sow.empty()){
+            x2 += 48 + sow.top();
+            sow.pop();
+        }
+    }
+    int a = atoi(x1.c_str());
+    int b = atoi(x2.c_str());
+    return a + b;
+}
+
+int main(){
+    int n;
+    cin >> n;
+    int kow[n];
+    for(int i = 0; i < n; i++){
+        cin >> kow[i];
+    }
+    cout << leastsum(kow, n);
+}
